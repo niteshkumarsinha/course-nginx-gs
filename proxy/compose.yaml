@@ -1,6 +1,7 @@
 services:
   nginx:
     image: nginx
+    network_mode: "host"
     ports:
       - "8080:8080"
       - "8081:8081"
@@ -14,15 +15,18 @@ services:
     image: ghost
     # ports:
     #   - "2368:2368"
+    network_mode: "host"
     environment:
       NODE_ENV: development
       url: http://localhost:8080
   email:
+    network_mode: "host"
     image: mailhog/mailhog
     # ports:
     #   - "8025:8025"
     #   # - "1025:1025"
   hello:
+    network_mode: "host"
     image: hashicorp/http-echo
     command: ["-text", "Hello!"]
     # ports:
